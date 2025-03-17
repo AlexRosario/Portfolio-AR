@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0" />
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+
+		<title>Battleship Game</title>
+		<style>
+			body {
+				font-family: 'Tinos', serif;
+				background-color: rgb(5, 47, 5);
+				color: white;
+				margin: 0;
+				padding: 0;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				height: 100vh;
+			}
+			.board-container {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				gap: 60px;
+				overflow: visible;
+				white-space: none;
+			}
+			.board {
+				display: grid;
+				grid-template-columns: repeat(10, 40px);
+				grid-template-rows: repeat(10, 40px);
+				overflow: visible;
+				white-space: none;
+			}
+			.cell {
+				width: 30px;
+				height: 30px;
+				text-align: center;
+				line-height: 30px;
+				border: 1px solid black;
+				cursor: pointer;
+				background-color: lightblue;
+			}
+			.miss {
+				background-color: gray;
+			}
+			.player-hit {
+				background-color: green;
+			}
+			.computer-hit {
+				background-color: red;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>Battleship</h1>
+		<button id="startGameBtn">Start Game</button>
+		<div class="board-container">
+			<div>
+				<h2>Computer's Board</h2>
+				<div
+					id="computerBoard"
+					class="board"></div>
+			</div>
+			<div>
+				<h2>Your Board</h2>
+				<div
+					id="playerBoard"
+					class="board"></div>
+			</div>
+		</div>
+
+		<script type="module">
+			import Battleship from './battleship.js';
+
+			const game = Battleship();
+			document.getElementById('startGameBtn').addEventListener('click', () => {
+				game.startGame();
+			});
+		</script>
+		<script
+			src="https://kit.fontawesome.com/a076d05399.js"
+			crossorigin="anonymous"></script>
+	</body>
+</html>
