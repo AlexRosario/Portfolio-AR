@@ -3,7 +3,7 @@ import './App.css';
 import ThemeBtn from './Components/ThemeBtn';
 import { useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronLeft, faShip } from '@fortawesome/free-solid-svg-icons';
+import { faChevronLeft, faShip, faLink } from '@fortawesome/free-solid-svg-icons';
 
 function App() {
 	const [cardSpin, setCardspin] = useState(true);
@@ -13,6 +13,8 @@ function App() {
 	const [sites, setSites] = useState(false);
 	const [ship, setShip] = useState(false);
 	const [arrow, setArrow] = useState(false);
+	const [links, setLinks] = useState(false);
+	const [drag, setDrag] = useState(false);
 	const [card, setCard] = useState(() => {
 		const savedCard = localStorage.getItem('card');
 		return savedCard ? JSON.parse(savedCard) : true;
@@ -21,7 +23,7 @@ function App() {
 		['Projects'],
 		['Battleship', './battleship/index.html'],
 		['GitHub', 'https://github.com/AlexRosario'],
-		['LinkedIn', 'https://www.linkedin.com/in/alex-rosario-1b1b1b1b/'],
+		['LinkedIn', 'https://www.linkedin.com/in/alex-rosario-00523b98/'],
 		['Services', './battleship/index.html'],
 		['Contact', 'https://front-saas-7pl2ao77k-alexrosario.vercel.app/#pageTop'],
 	];
@@ -32,7 +34,7 @@ function App() {
 		['Code', 'https://coder-flax.vercel.app/'],
 	];
 
-	useEffect(() => {
+	/*	useEffect(() => {
 		const handleUnload = () => {
 			console.log('GoodBye...');
 		};
@@ -42,7 +44,7 @@ function App() {
 		return () => {
 			window.removeEventListener('unload', handleUnload);
 		};
-	}, []);
+	}, []);*/
 
 	return (
 		<>
@@ -84,7 +86,9 @@ function App() {
 										justifyContent: 'center',
 									}}>
 									<a
-										className={`${lightMode ? '' : ' night'}${item[0] == 'GitHub' && arrow ? ' git' : ''}`}
+										className={`${lightMode ? '' : ' night'}${item[0] == 'GitHub' && arrow ? ' git' : ''}${
+											item[0] == 'LinkedIn' && drag ? ' drag' : ''
+										}`}
 										key={index}
 										href={`${item[0] == 'GitHub' ? '#' : item[1] ? item[1] : undefined}`}
 										onClick={(e) => {
@@ -102,13 +106,26 @@ function App() {
 											if (item[0] == 'Projects') {
 												e.preventDefault();
 											}
+											if (item[0] == 'LinkedIn') {
+												e.preventDefault();
+												setDrag(true);
+
+												setTimeout(() => {
+													window.open(item[1], '_blank');
+													setTimeout(() => {
+														setDrag(false);
+													}, 1000);
+												}, 2000);
+											}
 										}}
 										onMouseEnter={() => {
 											item[0] == 'Projects' ? setSites(true) : setSites(false);
 											item[0] == 'Battleship' ? setShip(true) : setShip(false);
+											item[0] == 'LinkedIn' ? setLinks(true) : setLinks(false);
 										}}
 										onMouseLeave={() => {
 											setShip(false);
+											setLinks(false);
 										}}
 										target='_blank'
 										rel='noopener noreferrer'>
@@ -150,6 +167,12 @@ function App() {
 							className={`ship${lightMode ? '' : ' night'}`}
 						/>
 					</div>
+				)}
+				{links && (
+					<FontAwesomeIcon
+						icon={faLink}
+						className={`link${lightMode ? '' : ' night'}${drag ? ' drag' : ''}`}
+					/>
 				)}
 			</div>
 			<ThemeBtn

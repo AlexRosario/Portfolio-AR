@@ -157,16 +157,12 @@ export default function Battleship() {
 
 	function computerMove() {
 		let row, col, rowKey;
-
 		if (compLastHit) {
-			row = compLastHit[0];
-			col = compLastHit[1];
 			let moves = getLogicalMoves(...compLastHit);
 			let keys = Object.keys(moves);
 			if (keys.length > 0) {
 				let direction = keys[Math.floor(Math.random() * keys.length)];
-				row = moves[direction][0];
-				col = moves[direction][1];
+				[row, col] = moves[direction];
 				rowKey = String.fromCharCode(row + 64);
 			} else {
 				compLastHit = '';

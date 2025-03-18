@@ -145,12 +145,26 @@ a.site-preview.night {
 	left: 60%;
 	color: black;
 	font-size: 50px;
-	animation: disappear 5s ease-in forwards;
+	animation: disappear 10s ease-in forwards;
 }
 .ship.night {
 	color: white;
 }
 
+.link {
+	position: absolute;
+	top: 40%;
+	left: 50%;
+	color: black;
+	font-size: 50px;
+	animation: disappear 3s linear forwards;
+}
+.link.night {
+	color: white;
+}
+.drag {
+	animation: disappear 3s linear forwards;
+}
 .theme-panel {
 	position: fixed;
 	right: 0;
@@ -271,6 +285,7 @@ a.site-preview.night {
 .flip {
 	animation: flip 5s ease-in forwards;
 }
+
 @keyframes flip {
 	0% {
 		animation-play-state: paused;
@@ -369,7 +384,7 @@ a.site-preview.night {
 
 @keyframes disappear {
 	0% {
-		transform: translateY(100px);
+		opacity: 1;
 	}
 	10% {
 		opacity: 0.9;
