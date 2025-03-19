@@ -36,12 +36,25 @@
 	-o-animation-timing-function: linear;
 	animation-timing-function: linear;
 }
-.landing-page.pause {
-	animation-play-state: paused;
-	color: white;
-}
+
 .landing-page.night {
 	background: url('https://www.toptal.com/designers/subtlepatterns/uploads/repeated-square-dark.png') repeat 0 0;
+	-webkit-animation: bg2-scrolling-reverse 0.45s infinite;
+	/* Safari 4+ */
+	-moz-animation: bg2-scrolling-reverse 0.45s infinite;
+	/* Fx 5+ */
+	-o-animation: bg2-scrolling-reverse 0.45s infinite;
+	/* Opera 12+ */
+	animation: bg2-scrolling-reverse 0.45s infinite;
+	/* IE 10+ */
+
+	-webkit-animation-timing-function: linear;
+	-moz-animation-timing-function: linear;
+	-o-animation-timing-function: linear;
+	animation-timing-function: linear;
+}
+.landing-page.pause {
+	animation-play-state: paused;
 }
 .nav {
 	position: fixed;
@@ -164,6 +177,101 @@ a.site-preview.night {
 }
 .drag {
 	animation: disappear 3s linear forwards;
+}
+#contact {
+	position: absolute;
+	top: 0%;
+	left: 0%;
+	width: 100%;
+	height: 100%;
+	z-index: 99;
+	background-color: rgb(237, 235, 235);
+	color: black;
+	font-size: 16px;
+	animation: disappear 0.5s linear reverse;
+}
+#contact.night {
+	background-color: rgb(49, 54, 62);
+	color: white;
+}
+#contact .container-fluid {
+	display: flex;
+	flex-direction: column;
+	text-align: left;
+}
+.modal-header {
+	display: flex;
+	justify-content: space-between;
+	padding: 20px;
+}
+.page-header {
+	margin-top: 0.25rem;
+	margin-bottom: 0.5rem;
+	color: black;
+}
+
+.modal-body {
+	display: flex;
+	flex-direction: column;
+	padding-left: 5%;
+}
+.page-header {
+	margin-top: 0.25rem;
+	margin-bottom: 0.5rem;
+	color: black;
+	margin-top: 0.25rem;
+	margin-bottom: 0.5rem;
+}
+.page-header.night {
+	color: white;
+}
+.contact-text {
+	font-size: 20px;
+	padding-bottom: 3.5rem;
+}
+.contact-text h5 {
+	font-size: 30px;
+}
+.folio-form {
+	display: flex;
+	flex-direction: column;
+}
+.folio-form .form-ctrl {
+	display: block;
+	border-top: 0;
+	border-left: 0;
+	border-right: 0;
+	max-width: 500px;
+	width: 100%;
+	color: var(--color-text);
+	padding: 0 0 5px 0;
+	line-height: 26px;
+	margin-bottom: 40px;
+	border-bottom: 1px solid black;
+	outline: none;
+	background: transparent;
+}
+.btn {
+	font-weight: 700;
+	max-width: 105px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	text-transform: uppercase;
+	letter-spacing: 1.63px;
+	transition: 0.4s;
+	height: 50px;
+	padding-left: 30px;
+	padding-right: 30px;
+	box-shadow: 0 32px 54px rgba(3, 3, 3, 0.12);
+	border-radius: 50rem;
+	background-color: rgb(49, 54, 62);
+	color: white;
+	cursor: pointer;
+}
+.btn.night {
+	background-color: white;
+	color: black;
 }
 .theme-panel {
 	position: fixed;
@@ -440,6 +548,7 @@ a.site-preview.night {
 		transform: translateX(2000px);
 	}
 }
+
 @-webkit-keyframes bg-scrolling-reverse {
 	100% {
 		background-position: 50px 50px;
@@ -480,56 +589,44 @@ a.site-preview.night {
 		background-position: 50px 50px;
 	}
 }
-@media (prefers-reduced-motion: no-preference) {
-	a:nth-of-type(2) .logo {
-		animation: logo-spin infinite 20s linear;
-	}
-}
+
 @-webkit-keyframes bg2-scrolling-reverse {
 	100% {
-		background-position: 50px 50px;
-		transform: scale(2);
+		background-position: 30px 30px;
 	}
 }
 @-moz-keyframes bg2-scrolling-reverse {
 	100% {
-		background-position: 50px 50px;
-		transform: scale(2);
+		background-position: 30px 30px;
 	}
 }
 @-o-keyframes bg2-scrolling-reverse {
 	100% {
-		background-position: 50px 50px;
-		transform: scale(2);
+		background-position: 30px 30px;
 	}
 }
 @keyframes bg2-scrolling-reverse {
 	100% {
-		background-position: 50px 50px;
-		transform: scale(2);
+		background-position: 30px 30px;
 	}
 }
 @-webkit-keyframes bg2-scrolling {
 	0% {
-		background-position: 50px 50px;
-		transform: scale(2);
+		background-position: 30px 30px;
 	}
 }
 @-moz-keyframes bg2-scrolling {
 	0% {
-		background-position: 50px 50px;
-		transform: scale(2);
+		background-position: 30px 30px;
 	}
 }
 @-o-keyframes bg2-scrolling {
 	0% {
-		background-position: 50px 50px;
-		transform: scale(2);
+		background-position: 30px 30px;
 	}
 }
 @keyframes bg2-scrolling {
 	0% {
-		background-position: 50px 50px;
-		transform: scale(2);
+		background-position: 30px 30px;
 	}
 }
