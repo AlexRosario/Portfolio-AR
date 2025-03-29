@@ -199,6 +199,42 @@ a.site-preview.night {
 	flex-direction: column;
 	text-align: left;
 }
+#service-inquiry-form {
+	position: absolute;
+	top: 0%;
+	left: 0%;
+	width: 100%;
+	height: 100%;
+	z-index: 99;
+
+	background-color: rgb(237, 235, 235);
+	color: black;
+	font-size: 16px;
+	animation: disappear 0.5s linear reverse;
+}
+.service-exit {
+	position: absolute;
+	top: 5%;
+	right: 5%;
+	font-size: larger;
+}
+.service-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	align-content: center;
+	padding: 20% 25% 15%;
+}
+.form-services {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	position: relative;
+	align-items: left;
+	text-align: left;
+}
+
 .modal-header {
 	display: flex;
 	justify-content: space-between;
@@ -253,7 +289,8 @@ a.site-preview.night {
 }
 .btn {
 	font-weight: 700;
-	max-width: 105px;
+	font-size: 12px;
+	max-width: fit-content;
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
@@ -393,7 +430,65 @@ a.site-preview.night {
 .flip {
 	animation: flip 5s ease-in forwards;
 }
+@media (max-width: 680px) {
+	.business-card {
+		max-width: 50%;
+		height: 100px;
+	}
+	.landing-page {
+		height: 100vh;
+		min-width: 100%;
+		background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAIAAACRXR/mAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAABnSURBVHja7M5RDYAwDEXRDgmvEocnlrQS2SwUFST9uEfBGWs9c97nbGtDcquqiKhOImLs/UpuzVzWEi1atGjRokWLFi1atGjRokWLFi1atGjRokWLFi1af7Ukz8xWp8z8AAAA//8DAJ4LoEAAlL1nAAAAAElFTkSuQmCC')
+			repeat 0 0;
+		background-attachment: fixed;
+	}
 
+	.business-card .name-container {
+		font-size: 10px;
+	}
+	.menu-item {
+		font-size: 80%;
+	}
+	.project-list a {
+		font-size: 10px;
+	}
+	.ship {
+		font-size: 10px;
+	}
+	.link {
+		font-size: 10px;
+	}
+	.contact-text {
+		font-size: 10px;
+	}
+	.folio-form .form-ctrl {
+		font-size: 10px;
+	}
+	.btn {
+		font-size: 10px;
+	}
+	.theme-panel {
+		font-size: 10px;
+	}
+	.theme-body {
+		font-size: 10px;
+	}
+	.theme-body > span {
+		font-size: 10px;
+	}
+	.theme-body .btn-group {
+		font-size: 10px;
+	}
+	.theme-body .btn-group .switcher-btn {
+		font-size: 10px;
+	}
+	.theme-body .btn-group .switcher-btn.active {
+		font-size: 10px;
+	}
+	.theme-body .theme-tab {
+		font-size: 10px;
+	}
+}
 @keyframes flip {
 	0% {
 		animation-play-state: paused;

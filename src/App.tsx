@@ -2,14 +2,13 @@ import { useState } from 'react';
 import './App.css';
 import ThemeBtn from './Components/ThemeBtn';
 import Contact from './Components/Contact';
-import { useEffect } from 'react';
+import Services from './Components/Services';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShip, faLink } from '@fortawesome/free-solid-svg-icons';
 
 function App() {
 	const [cardSpin, setCardspin] = useState<boolean>(true);
 	const [lightMode, setLightMode] = useState<boolean>(true);
-	const [back, setBack] = useState<boolean>(false);
 	const [pause, setPause] = useState<boolean>(false);
 	const [sites, setSites] = useState<boolean>(false);
 	const [ship, setShip] = useState<boolean>(false);
@@ -17,6 +16,7 @@ function App() {
 	const [links, setLinks] = useState<boolean>(false);
 	const [drag, setDrag] = useState<boolean>(false);
 	const [contact, setContact] = useState<boolean>(false);
+	const [services, setServices] = useState<boolean>(false);
 	const [card, setCard] = useState(() => {
 		const savedCard = localStorage.getItem('card');
 		return savedCard ? JSON.parse(savedCard) : true;
@@ -26,27 +26,15 @@ function App() {
 		['Battleship', './battleship/index.html'],
 		['GitHub', 'https://github.com/AlexRosario'],
 		['LinkedIn', 'https://www.linkedin.com/in/alex-rosario-00523b98/'],
-		['Services', './battleship/index.html'],
-		['Contact', 'https://front-saas-7pl2ao77k-alexrosario.vercel.app/#pageTop'],
+		['Services'],
+		['Contact'],
 	];
 	const [active, setActive] = useState(true);
 	const projects = [
 		['Folio', 'https://folio-nine-eta.vercel.app/'],
 		['Front', 'https://front-saas-7pl2ao77k-alexrosario.vercel.app/#pageTop'],
-		['Code'],
+		['Code', 'https://coder-flax.vercel.app/'],
 	];
-
-	/*	useEffect(() => {
-		const handleUnload = () => {
-			console.log('GoodBye...');
-		};
-
-		window.addEventListener('unload', handleUnload);
-
-		return () => {
-			window.removeEventListener('unload', handleUnload);
-		};
-	}, []);*/
 
 	return (
 		<>
@@ -60,31 +48,19 @@ function App() {
 						className={`business-card ${cardSpin ? '' : 'flip'}${lightMode ? '' : ' night'}`}
 						onClick={() => {
 							setCardspin(!cardSpin);
-							setTimeout(() => setBack(!back), 900);
 							setTimeout(() => setCard(!card), 5100);
 							localStorage.setItem(card, JSON.stringify(card));
 						}}>
 						<div className='name-container'>
-							{!back && (
-								<>
-									<h2>Alex Rosario</h2>
-									<h6 className='click'> Click me!</h6>
-								</>
-							)}
+							<h2>Alex Rosario</h2>
+							<h6 className='click'> Click me!</h6>
 						</div>
 					</div>
 				) : (
 					<div className='menu'>
 						{portfolio.map((item, index) => {
 							return (
-								<div
-									className={`menu-item${item[0] == 'Projects' && sites ? ' list' : ''}`}
-									style={{
-										display: 'flex',
-										flexDirection: 'row',
-
-										justifyContent: 'center',
-									}}>
+								<div className={`menu-item${item[0] == 'Projects' && sites ? ' list' : ''}`}>
 									<a
 										className={`${lightMode ? '' : ' night'}${item[0] == 'GitHub' && arrow ? ' git' : ''}${
 											item[0] == 'LinkedIn' && drag ? ' drag' : ''
@@ -116,6 +92,10 @@ function App() {
 														setDrag(false);
 													}, 1000);
 												}, 2000);
+											}
+											if (item[0] == 'Services') {
+												e.preventDefault();
+												setServices(true);
 											}
 											if (item[0] == 'Contact') {
 												e.preventDefault();
@@ -182,6 +162,12 @@ function App() {
 					<Contact
 						lightMode={lightMode}
 						setContact={() => setContact(false)}
+					/>
+				)}
+				{services && (
+					<Services
+						lightMode={lightMode}
+						setServices={() => setServices(false)}
 					/>
 				)}
 			</div>
